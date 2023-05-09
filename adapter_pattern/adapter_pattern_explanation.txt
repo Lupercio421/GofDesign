@@ -1,0 +1,4 @@
+- So we keep the original Logger.
+- And we also keep the FilteredLogger.
+- But instead of creating destination-specific subclasses, we adapt each destination to the behavior 
+of a file and then pass the adapter to a Logger as its output file.
