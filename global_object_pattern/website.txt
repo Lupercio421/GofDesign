@@ -1,0 +1,10 @@
+https://python-patterns.guide/python/module-globals/
+
+Two patterns use Module Globals but are important enough to warrant their own articles:
+
+- Prebound Methods are generated when a module builds an object and then assigns one or more of the object’s bound methods to names at the module’s global level. The names can be used to call the methods later without needing to find the object itself.
+- While a Sentinel Object doesn’t have to live in a module’s global namespace — some sentinel objects are defined as class attributes, while others are private and live inside of a closure — many sentinels, both in the Standard Library and beyond, are defined and accessed as module globals.
+
+In the full-fledged Global Object pattern, as in the Constant pattern, a module instantiates an object at import time and assigns it a name in the module’s global scope. But the object does not simply serve as data; it is not merely an integer, string, or data structure. Instead, the object is made available for the sake of the methods it offers — for the actions it can perform.
+
+For all of these reasons, it’s best for your global objects to wait until they’re first called before opening files and creating sockets — because it’s at the moment of that first call that the library knows the main program is now up and running, and knows that its services are in fact definitely needed in this particular run of the program.
